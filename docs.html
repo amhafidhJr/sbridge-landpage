@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>SMS Bridge Gateway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .guide-content {
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .guide-content pre {
+            background: #2d2d2d;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .guide-content code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        .guide-content pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .guide-content h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .guide-content h4 {
+            color: #34495e;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .guide-content ul {
+            padding-left: 20px;
+        }
+
+        .guide-content li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold" href="index.html">SBG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="https://sbg.org">Jisajili</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="docs.html">Documentation</a></li>
+
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <div class="text-center mt-5-2">
+            <h1 class="display-4">SMS Bridge Gateway</h1>
+            <p class="lead text-muted">Integration guide for connecting your backend system with the SMS Bridge Android
+                App.</p>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="integrationTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="laravel-tab" data-bs-toggle="tab" data-bs-target="#laravel"
+                    type="button" role="tab">Laravel</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button"
+                    role="tab">Python</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="spring-tab" data-bs-toggle="tab" data-bs-target="#spring" type="button"
+                    role="tab">Spring Boot</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="node-tab" data-bs-toggle="tab" data-bs-target="#node" type="button"
+                    role="tab">Node.js</button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Laravel Tab -->
+            <div class="tab-pane fade show active" id="laravel" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Laravel Integration Guide</h3>
+
+                    <h4>Overview</h4>
+                    <p>SMS Bridge Gateway allows your Laravel backend to send SMS messages through an Android device
+                        running the SMS Bridge App. This guide provides a complete setup: database models, controllers,
+                        routes, and integration steps.</p>
+
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Laravel 8+</li>
+                        <li>PHP 8.0+</li>
+                        <li>MySQL/PostgreSQL database</li>
+                        <li>Android device with SMS Bridge App installed</li>
+                    </ul>
+
+                    <h4>Step 1: Database Models</h4>
+
+                    <h5>SMS Model</h5>
+                    <p>Create a model <code>Sms</code>:</p>
+                    <pre><code>&lt;?php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Sms extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'sms_status',
+        'message',
+        'error_message',
+        'sent_at',
+        'delivered_at',
+        'user_phone_number_id'
+    ];
+
+    // Status values - aligned with Android app
+    const STATUS_QUEUED = 'QUEUED';
+    const STATUS_PENDING = 'PENDING';
+    const STATUS_SENT = 'SENT';
+    const STATUS_DELIVERED = 'DELIVERED';
+    const STATUS_FAILED = 'FAILED';
+
+    public static function getValidStatuses(): array
+    {
+        return [
+            self::STATUS_QUEUED,
+            self::STATUS_PENDING,
+            self::STATUS_SENT,
+            self::STATUS_DELIVERED,
+            self::STATUS_FAILED,
+        ];
+    }
+
+    public function recipientNumber()
+    {
+        return $this->belongsTo(UserPhoneNumber::class, 'user_phone_number_id');
+    }
+
+}</code></pre>
+
+                    <h5>UserPhoneNumber Model</h5>
+                    <p>Create a model <code>UserPhoneNumber</code>:</p>
+                    <pre><code>&lt;?php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class UserPhoneNumber extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['phone_number'];
+
+    public function sms()
+    {
+        return $this->hasMany(Sms::class, 'user_phone_number_id');
+    }
+
+}</code></pre>
+
+                    <h4>Step 2: Controller</h4>
+                    <p>Create a controller <code>SmsBridgeController</code>:</p>
+                    <pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Sms;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
+class SmsBridgeController extends Controller
+{
+    // GET /pending-sms - Get all QUEUED and FAILED SMS
+    public function getPendingSms()
+    {
+        Log::info('Fetching pending SMS (QUEUED and FAILED)');
+
+        // Get all SMS with status QUEUED or FAILED
+        $pendingSms = Sms::with('recipientNumber')
+            ->whereIn('sms_status', ['QUEUED', 'FAILED'])
+            ->orderBy('id', 'asc')
+            ->take(50)
+            ->get();
+
+        Log::info('Found ' . $pendingSms->count() . ' pending SMS records');
+
+        $response = $pendingSms->map(function ($sms) {
+            return [
+                'id'              => $sms->id,
+                'userId'          => $sms->user_phone_number_id,
+                'recipientNumber' => $sms->recipientNumber->phone_number ?? null,
+                'message'         => $sms->message,
+                'status'          => $sms->sms_status,
+                'sentAt'          => $sms->sent_at,
+                'deliveredAt'     => $sms->delivered_at,
+            ];
+        });
+
+        return response()->json($response);
+    }
+
+    public function testConnection()
+    {
+        Log::info('=== TEST CONNECTION ENDPOINT HIT ===');
+
+        return response()->json([
+            'status'  => 'ok',
+            'message' => 'Connection successful',
+        ]);
+    }
+
+    public function updateStatus(Request $request)
+    {
+        Log::info('SMS status update request received', $request->all());
+
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'message_id' => 'required|string',
+            'status'     => 'required|string|in:' . implode(',', Sms::getValidStatuses()),
+        ]);
+
+        if ($validator->fails()) {
+            Log::warning('SMS status update validation failed', [
+                'errors'  => $validator->errors()->toArray(),
+                'request' => $request->all(),
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid request data',
+                'errors'  => $validator->errors(),
+            ], 422);
+        }
+
+        try {
+            $messageId = $request->message_id;
+            $status    = $request->status;
+
+            // Find the SMS record
+            $sms = Sms::where('id', $messageId)->first();
+
+            if (! $sms) {
+                Log::warning('SMS record not found', ['message_id' => $messageId]);
+                return response()->json([
+                    'success' => false,
+                    'message' => 'SMS record not found',
+                ], 404);
+            }
+
+            // Log the status transition
+            Log::info('Updating SMS status', [
+                'message_id'  => $messageId,
+                'from_status' => $sms->sms_status,
+                'to_status'   => $status,
+            ]);
+
+            // Update the status
+            $sms->sms_status = $status;
+
+            // Update timestamps based on status
+            switch ($status) {
+                case Sms::STATUS_SENT:
+                    $sms->sent_at = now();
+                    break;
+                case Sms::STATUS_DELIVERED:
+                    $sms->delivered_at = now();
+                    break;
+                case Sms::STATUS_FAILED:
+                    // You can capture error message if provided
+                    if ($request->has('error_message')) {
+                        $sms->error_message = $request->error_message;
+                    }
+                    break;
+            }
+
+            $sms->save();
+
+            Log::info('SMS status updated successfully', [
+                'message_id' => $messageId,
+                'status'     => $status,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Status updated successfully',
+                'data'    => [
+                    'message_id'   => $sms->id,
+                    'status'       => $sms->sms_status,
+                    'sent_at'      => $sms->sent_at,
+                    'delivered_at' => $sms->delivered_at,
+                ],
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error('Error updating SMS status', [
+                'error'   => $e->getMessage(),
+                'trace'   => $e->getTraceAsString(),
+                'request' => $request->all(),
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Internal server error',
+            ], 500);
+        }
+    }
+
+
+
+}</code></pre>
+
+                    <h4>Step 3: Routes</h4>
+                    <p>Add API routes in <code>routes/api.php</code>:</p>
+                    <pre><code>use App\Http\Controllers\SmsBridgeController;
+
+Route::prefix('api/v1/sms-bridge')-&gt;group(function () {
+   Route::get('/pending-sms', [SmsBridgeController::class, 'getPendingSms']);
+    Route::post('/update-status', [SmsBridgeController::class, 'updateStatus']);
+});
+
+Route::get('/test-connection', [SmsBridgeController::class, 'testConnection']);</code></pre>
+
+                    <h4>Integration Notes</h4>
+                    <ul>
+                        <li>The Android app calls <code>/pending-sms</code> to fetch messages with status
+                            <code>QUEUED</code> or <code>FAILED</code></li>
+                        <li>After sending, the app updates status using <code>/update-status</code></li>
+                        <li>Limit messages fetched per request (e.g., 50) to prevent overloading the device</li>
+                        <li>Use a constant <code>BASE_URL</code> in the Android app for API calls</li>
+                        <li>Handle <code>FAILED</code> messages carefully and log errors</li>
+                    </ul>
+
+
+                </div>
+            </div>
+
+            <!-- Other tabs remain the same -->
+            <div class="tab-pane fade" id="python" role="tabpanel">
+                <h3 class="mt-4">Python Integration</h3>
+                <p>Python backend integration instructions will be added here.</p>
+            </div>
+
+            <div class="tab-pane fade" id="spring" role="tabpanel">
+                <h3 class="mt-4">Spring Boot Integration</h3>
+                <p>Spring Boot backend integration instructions will be added here.</p>
+            </div>
+
+            <div class="tab-pane fade" id="node" role="tabpanel">
+                <h3 class="mt-4">Node.js Integration</h3>
+                <p>Node.js backend integration instructions will be added here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer and modal remain the same -->
+
+
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <!-- Modal content remains the same -->
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>
