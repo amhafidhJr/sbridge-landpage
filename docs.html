@@ -8,29 +8,22 @@
     <meta name="author" content="" />
     <title>SMS Bridge Gateway</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
+        body { font-family: 'Mulish', sans-serif; padding-top: 70px; }
         .guide-content {
-            max-height: 600px;
+            max-height: 700px;
             overflow-y: auto;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 8px;
             margin-top: 20px;
         }
-
         .guide-content pre {
             background: #2d2d2d;
             color: #f8f9fa;
@@ -39,119 +32,104 @@
             overflow-x: auto;
             margin: 15px 0;
         }
-
         .guide-content code {
             background: #e9ecef;
             padding: 2px 6px;
             border-radius: 3px;
             color: #d63384;
         }
-
         .guide-content pre code {
             background: none;
             color: inherit;
             padding: 0;
         }
-
-        .guide-content h3 {
-            color: #2c3e50;
-            margin-top: 25px;
-            margin-bottom: 15px;
+        .guide-content h3 { color: #2c3e50; margin-top: 25px; margin-bottom: 15px; }
+        .guide-content h4 { color: #34495e; margin-top: 20px; margin-bottom: 10px; }
+        .guide-content h5 { color: #5d6d7e; margin-top: 15px; margin-bottom: 8px; }
+        .guide-content ul { padding-left: 20px; }
+        .guide-content li { margin-bottom: 8px; }
+        .badge-method {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-family: monospace;
         }
-
-        .guide-content h4 {
-            color: #34495e;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .guide-content ul {
-            padding-left: 20px;
-        }
-
-        .guide-content li {
-            margin-bottom: 8px;
+        .badge-get { background: #d4edda; color: #155724; }
+        .badge-post { background: #cce5ff; color: #004085; }
+        .endpoint-box {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            font-family: monospace;
         }
     </style>
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container px-5">
             <a class="navbar-brand fw-bold" href="index.html">SBG</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="bi-list"></i>
+                Menu <i class="bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
                     <li class="nav-item"><a class="nav-link me-lg-3" href="https://sb-server-production.up.railway.app">Jisajili</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link me-lg-3" href="docs.html">Documentation</a></li> -->
-
                     <li class="nav-item"><a class="nav-link me-lg-3" href="/download/sbgapp.apk">Download Mobile App</a></li>
                 </ul>
-                
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <!-- Page Header -->
-        <div class="text-center mt-5-2">
+    <div class="container mb-5">
+        <div class="text-center mt-4 mb-4">
             <h1 class="display-4">SMS Bridge Gateway</h1>
-            <p class="lead text-muted">Integration guide for connecting your backend system with the SMS Bridge Android
-                App.</p>
+            <p class="lead text-muted">Integration guide for connecting your backend system with the SMS Bridge Android App.</p>
         </div>
 
-        <!-- Tabs -->
         <ul class="nav nav-tabs" id="integrationTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="laravel-tab" data-bs-toggle="tab" data-bs-target="#laravel"
-                    type="button" role="tab">Laravel</button>
+                <button class="nav-link active" id="laravel-tab" data-bs-toggle="tab" data-bs-target="#laravel" type="button" role="tab">Laravel</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button"
-                    role="tab">Python</button>
+                <button class="nav-link" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button" role="tab">Python (Flask/Django)</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="spring-tab" data-bs-toggle="tab" data-bs-target="#spring" type="button"
-                    role="tab">Spring Boot</button>
+                <button class="nav-link" id="spring-tab" data-bs-toggle="tab" data-bs-target="#spring" type="button" role="tab">Spring Boot</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="node-tab" data-bs-toggle="tab" data-bs-target="#node" type="button"
-                    role="tab">Node.js</button>
+                <button class="nav-link" id="node-tab" data-bs-toggle="tab" data-bs-target="#node" type="button" role="tab">Node.js</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="postman-tab" data-bs-toggle="tab" data-bs-target="#postman" type="button" role="tab">📬 Postman / API Reference</button>
             </li>
         </ul>
 
-        <!-- Tab Content -->
-        
+        <div class="tab-content">
 
-            <!-- Tab Content -->
-<div class="tab-content">
+            <!-- ==================== LARAVEL TAB ==================== -->
+            <div class="tab-pane fade show active" id="laravel" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Laravel Integration Guide</h3>
+                    <h4>Overview</h4>
+                    <p>SMS Bridge Gateway allows your Laravel backend to send SMS messages through an Android device running the SMS Bridge App. This guide provides a complete setup: database models, controllers, routes, and integration steps.</p>
 
-    <!-- Laravel Tab (Your Original - Kept Unchanged) -->
-    <div class="tab-pane fade show active" id="laravel" role="tabpanel">
-        <div class="guide-content">
-            <h3>Laravel Integration Guide</h3>
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Laravel 8+</li>
+                        <li>PHP 8.0+</li>
+                        <li>MySQL/PostgreSQL database</li>
+                        <li>Android device with SMS Bridge App installed</li>
+                    </ul>
 
-            <h4>Overview</h4>
-            <p>SMS Bridge Gateway allows your Laravel backend to send SMS messages through an Android device running the SMS Bridge App. This guide provides a complete setup: database models, controllers, routes, and integration steps.</p>
-
-            <h4>Requirements</h4>
-            <ul>
-                <li>Laravel 8+</li>
-                <li>PHP 8.0+</li>
-                <li>MySQL/PostgreSQL database</li>
-                <li>Android device with SMS Bridge App installed</li>
-            </ul>
-
-            <h4>Step 1: Database Models</h4>
-
-            <h5>SMS Model</h5>
-            <p>Create a model <code>Sms</code>:</p>
-            <pre><code>&lt;?php
+                    <h4>Step 1: Database Models</h4>
+                    <h5>SMS Model</h5>
+                    <p>Create a model <code>Sms</code>:</p>
+                    <pre><code>&lt;?php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -170,12 +148,11 @@ class Sms extends Model
         'user_phone_number_id'
     ];
 
-    // Status values - aligned with Android app
-    const STATUS_QUEUED = 'QUEUED';
-    const STATUS_PENDING = 'PENDING';
-    const STATUS_SENT = 'SENT';
+    const STATUS_QUEUED    = 'QUEUED';
+    const STATUS_PENDING   = 'PENDING';
+    const STATUS_SENT      = 'SENT';
     const STATUS_DELIVERED = 'DELIVERED';
-    const STATUS_FAILED = 'FAILED';
+    const STATUS_FAILED    = 'FAILED';
 
     public static function getValidStatuses(): array
     {
@@ -194,9 +171,8 @@ class Sms extends Model
     }
 }</code></pre>
 
-            <h5>UserPhoneNumber Model</h5>
-            <p>Create a model <code>UserPhoneNumber</code>:</p>
-            <pre><code>&lt;?php
+                    <h5>UserPhoneNumber Model</h5>
+                    <pre><code>&lt;?php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -214,10 +190,8 @@ class UserPhoneNumber extends Model
     }
 }</code></pre>
 
-            <h4>Step 2: Controller</h4>
-            <p>Create a controller <code>SmsBridgeController</code>:</p>
-            <pre><code>&lt;?php
-
+                    <h4>Step 2: Controller</h4>
+                    <pre><code>&lt;?php
 namespace App\Http\Controllers;
 
 use App\Models\Sms;
@@ -227,18 +201,13 @@ use Illuminate\Support\Facades\Validator;
 
 class SmsBridgeController extends Controller
 {
-    // GET /pending-sms - Get all QUEUED and FAILED SMS
     public function getPendingSms()
     {
-        Log::info('Fetching pending SMS (QUEUED and FAILED)');
-
         $pendingSms = Sms::with('recipientNumber')
             ->whereIn('sms_status', ['QUEUED', 'FAILED'])
             ->orderBy('id', 'asc')
             ->take(50)
             ->get();
-
-        Log::info('Found ' . $pendingSms->count() . ' pending SMS records');
 
         $response = $pendingSms->map(function ($sms) {
             return [
@@ -257,350 +226,959 @@ class SmsBridgeController extends Controller
 
     public function testConnection()
     {
-        Log::info('=== TEST CONNECTION ENDPOINT HIT ===');
-
-        return response()->json([
-            'status'  => 'ok',
-            'message' => 'Connection successful',
-        ]);
+        return response()->json(['status' => 'ok', 'message' => 'Connection successful']);
     }
 
     public function updateStatus(Request $request)
     {
-        Log::info('SMS status update request received', $request->all());
-
         $validator = Validator::make($request->all(), [
             'message_id' => 'required|string',
             'status'     => 'required|string|in:' . implode(',', Sms::getValidStatuses()),
         ]);
 
         if ($validator->fails()) {
-            Log::warning('SMS status update validation failed', ['errors' => $validator->errors()->toArray()]);
-            return response()->json(['success' => false, 'message' => 'Invalid request data', 'errors' => $validator->errors()], 422);
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
-        try {
-            $messageId = $request->message_id;
-            $status    = $request->status;
+        $sms = Sms::find($request->message_id);
+        if (!$sms) return response()->json(['success' => false, 'message' => 'SMS not found'], 404);
 
-            $sms = Sms::where('id', $messageId)->first();
+        $sms->sms_status = $request->status;
+        if ($request->status === Sms::STATUS_SENT) $sms->sent_at = now();
+        if ($request->status === Sms::STATUS_DELIVERED) $sms->delivered_at = now();
+        if ($request->status === Sms::STATUS_FAILED && $request->has('error_message'))
+            $sms->error_message = $request->error_message;
+        $sms->save();
 
-            if (!$sms) {
-                Log::warning('SMS record not found', ['message_id' => $messageId]);
-                return response()->json(['success' => false, 'message' => 'SMS record not found'], 404);
-            }
-
-            Log::info('Updating SMS status', ['message_id' => $messageId, 'from_status' => $sms->sms_status, 'to_status' => $status]);
-
-            $sms->sms_status = $status;
-
-            switch ($status) {
-                case Sms::STATUS_SENT:
-                    $sms->sent_at = now();
-                    break;
-                case Sms::STATUS_DELIVERED:
-                    $sms->delivered_at = now();
-                    break;
-                case Sms::STATUS_FAILED:
-                    if ($request->has('error_message')) {
-                        $sms->error_message = $request->error_message;
-                    }
-                    break;
-            }
-
-            $sms->save();
-
-            Log::info('SMS status updated successfully', ['message_id' => $messageId, 'status' => $status]);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Status updated successfully',
-                'data'    => [
-                    'message_id'   => $sms->id,
-                    'status'       => $sms->sms_status,
-                    'sent_at'      => $sms->sent_at,
-                    'delivered_at' => $sms->delivered_at,
-                ],
-            ]);
-
-        } catch (\Exception $e) {
-            Log::error('Error updating SMS status', ['error' => $e->getMessage()]);
-            return response()->json(['success' => false, 'message' => 'Internal server error'], 500);
-        }
+        return response()->json(['success' => true, 'message' => 'Status updated successfully']);
     }
 }</code></pre>
 
-            <h4>Step 3: Routes</h4>
-            <p>Add these routes in <code>routes/api.php</code>:</p>
-            <pre><code>use App\Http\Controllers\SmsBridgeController;
+                    <h4>Step 3: Routes</h4>
+                    <pre><code>use App\Http\Controllers\SmsBridgeController;
 
-Route::prefix('api/v1/sms-bridge')-&gt;group(function () {
+Route::prefix('api/v1/sms-bridge')->group(function () {
     Route::get('/pending-sms', [SmsBridgeController::class, 'getPendingSms']);
     Route::post('/update-status', [SmsBridgeController::class, 'updateStatus']);
 });
 
 Route::get('/test-connection', [SmsBridgeController::class, 'testConnection']);</code></pre>
 
-            <h4>Integration Notes</h4>
-            <ul>
-                <li>The Android app calls <code>/pending-sms</code> to fetch QUEUED or FAILED messages</li>
-                <li>After sending, the app calls <code>/update-status</code></li>
-                <li>Limit is set to 50 messages per request to avoid overloading the Android device</li>
-                <li>Use a constant <code>BASE_URL</code> in the Android app</li>
-            </ul>
-        </div>
-    </div>
+                    <h4>Integration Notes</h4>
+                    <ul>
+                        <li>The Android app polls <code>/pending-sms</code> to fetch messages with status <code>QUEUED</code> or <code>FAILED</code></li>
+                        <li>After sending, the app posts status updates to <code>/update-status</code></li>
+                        <li>Limit messages fetched per request (e.g., 50) to prevent overloading the device</li>
+                        <li>Handle <code>FAILED</code> messages carefully and log errors</li>
+                    </ul>
+                </div>
+            </div>
 
-    <!-- Python Tab (FastAPI) -->
-    <div class="tab-pane fade" id="python" role="tabpanel">
-        <div class="guide-content">
-            <h3>Python Integration Guide (FastAPI)</h3>
-            <h4>Overview</h4>
-            <p>Complete integration for Python using FastAPI and SQLAlchemy.</p>
+            <!-- ==================== PYTHON TAB ==================== -->
+            <div class="tab-pane fade" id="python" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Python Integration Guide (Flask)</h3>
 
-            <h4>Requirements</h4>
-            <ul>
-                <li>Python 3.9+</li>
-                <li>FastAPI + Uvicorn</li>
-                <li>SQLAlchemy</li>
-            </ul>
+                    <h4>Overview</h4>
+                    <p>This guide shows how to integrate SMS Bridge Gateway with a Python Flask backend. The same logic applies to Django — see the Django note at the bottom.</p>
 
-            <h4>Step 1: Models (models.py)</h4>
-            <pre><code>from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
-from database import Base
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Python 3.8+</li>
+                        <li>Flask 2.0+ (or Django 4.0+)</li>
+                        <li>SQLAlchemy (Flask) or Django ORM</li>
+                        <li>MySQL or PostgreSQL database</li>
+                        <li>Android device with SMS Bridge App installed</li>
+                    </ul>
+
+                    <h4>Step 1: Install Dependencies</h4>
+                    <pre><code>pip install flask flask-sqlalchemy flask-migrate python-dotenv</code></pre>
+
+                    <h4>Step 2: Database Models</h4>
+                    <pre><code># models.py
 from datetime import datetime
+from flask_sqlalchemy import SQLAlchemy
 
-class Sms(Base):
-    __tablename__ = "sms"
+db = SQLAlchemy()
 
-    id = Column(Integer, primary_key=True, index=True)
-    sms_status = Column(String, default="QUEUED")
-    message = Column(String, nullable=False)
-    error_message = Column(String, nullable=True)
-    sent_at = Column(DateTime, nullable=True)
-    delivered_at = Column(DateTime, nullable=True)
-    user_phone_number_id = Column(Integer, ForeignKey("user_phone_numbers.id"))
+class UserPhoneNumber(db.Model):
+    __tablename__ = 'user_phone_numbers'
 
-    recipient_number = relationship("UserPhoneNumber", back_populates="sms")
+    id           = db.Column(db.Integer, primary_key=True)
+    phone_number = db.Column(db.String(20), nullable=False)
+    created_at   = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at   = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    STATUS_QUEUED = "QUEUED"
-    STATUS_PENDING = "PENDING"
-    STATUS_SENT = "SENT"
-    STATUS_DELIVERED = "DELIVERED"
-    STATUS_FAILED = "FAILED"
+    sms_messages = db.relationship('Sms', backref='recipient_number', lazy=True)
 
-    @staticmethod
-    def get_valid_statuses():
-        return [Sms.STATUS_QUEUED, Sms.STATUS_PENDING, Sms.STATUS_SENT, Sms.STATUS_DELIVERED, Sms.STATUS_FAILED]
+    def __repr__(self):
+        return f'&lt;UserPhoneNumber {self.phone_number}&gt;'
 
 
-class UserPhoneNumber(Base):
-    __tablename__ = "user_phone_numbers"
-    id = Column(Integer, primary_key=True, index=True)
-    phone_number = Column(String, unique=True, nullable=False)
+class Sms(db.Model):
+    __tablename__ = 'sms'
 
-    sms = relationship("Sms", back_populates="recipient_number")</code></pre>
+    STATUS_QUEUED    = 'QUEUED'
+    STATUS_PENDING   = 'PENDING'
+    STATUS_SENT      = 'SENT'
+    STATUS_DELIVERED = 'DELIVERED'
+    STATUS_FAILED    = 'FAILED'
 
-            <h4>Step 2: Router/Controller (sms_bridge.py)</h4>
-            <pre><code>from fastapi import APIRouter, Depends, HTTPException, Request
-from sqlalchemy.orm import Session
-from sqlalchemy import or_
+    VALID_STATUSES = [STATUS_QUEUED, STATUS_PENDING, STATUS_SENT, STATUS_DELIVERED, STATUS_FAILED]
+
+    id                  = db.Column(db.Integer, primary_key=True)
+    sms_status          = db.Column(db.String(20), nullable=False, default='QUEUED')
+    message             = db.Column(db.Text, nullable=False)
+    error_message       = db.Column(db.Text, nullable=True)
+    sent_at             = db.Column(db.DateTime, nullable=True)
+    delivered_at        = db.Column(db.DateTime, nullable=True)
+    user_phone_number_id = db.Column(db.Integer, db.ForeignKey('user_phone_numbers.id'), nullable=False)
+    created_at          = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at          = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id':              self.id,
+            'userId':          self.user_phone_number_id,
+            'recipientNumber': self.recipient_number.phone_number if self.recipient_number else None,
+            'message':         self.message,
+            'status':          self.sms_status,
+            'sentAt':          self.sent_at.isoformat() if self.sent_at else None,
+            'deliveredAt':     self.delivered_at.isoformat() if self.delivered_at else None,
+        }</code></pre>
+
+                    <h4>Step 3: Flask App & Routes</h4>
+                    <pre><code># app.py
+from flask import Flask, jsonify, request
+from models import db, Sms, UserPhoneNumber
 from datetime import datetime
 import logging
 
-from models import Sms, UserPhoneNumber
-from database import get_db
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@localhost/sms_bridge'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-router = APIRouter(prefix="/api/v1/sms-bridge")
+db.init_app(app)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-@router.get("/pending-sms")
-async def get_pending_sms(db: Session = Depends(get_db)):
-    logger.info("Fetching pending SMS (QUEUED and FAILED)")
-    
-    pending_sms = db.query(Sms).join(UserPhoneNumber).filter(
-        or_(Sms.sms_status == Sms.STATUS_QUEUED, Sms.sms_status == Sms.STATUS_FAILED)
-    ).order_by(Sms.id.asc()).limit(50).all()
 
-    response = []
-    for sms in pending_sms:
-        response.append({
-            'id': sms.id,
-            'userId': sms.user_phone_number_id,
-            'recipientNumber': sms.recipient_number.phone_number if sms.recipient_number else None,
-            'message': sms.message,
-            'status': sms.sms_status,
-            'sentAt': sms.sent_at.isoformat() if sms.sent_at else None,
-            'deliveredAt': sms.delivered_at.isoformat() if sms.delivered_at else None,
-        })
-    return response
+@app.route('/test-connection', methods=['GET'])
+def test_connection():
+    logger.info('Test connection endpoint hit')
+    return jsonify({'status': 'ok', 'message': 'Connection successful'})
 
-@router.get("/test-connection")
-async def test_connection():
-    logger.info("=== TEST CONNECTION ENDPOINT HIT ===")
-    return {"status": "ok", "message": "Connection successful"}
 
-@router.post("/update-status")
-async def update_status(request: Request, db: Session = Depends(get_db)):
-    data = await request.json()
-    message_id = data.get("message_id")
-    status = data.get("status")
+@app.route('/api/v1/sms-bridge/pending-sms', methods=['GET'])
+def get_pending_sms():
+    logger.info('Fetching pending SMS (QUEUED and FAILED)')
 
-    if not message_id or status not in Sms.get_valid_statuses():
-        raise HTTPException(status_code=422, detail="Invalid request data")
+    pending = Sms.query \
+        .filter(Sms.sms_status.in_(['QUEUED', 'FAILED'])) \
+        .order_by(Sms.id.asc()) \
+        .limit(50) \
+        .all()
 
-    sms = db.query(Sms).filter(Sms.id == int(message_id)).first()
+    logger.info(f'Found {len(pending)} pending SMS records')
+    return jsonify([sms.to_dict() for sms in pending])
+
+
+@app.route('/api/v1/sms-bridge/update-status', methods=['POST'])
+def update_status():
+    data = request.get_json()
+
+    if not data:
+        return jsonify({'success': False, 'message': 'Invalid JSON body'}), 400
+
+    message_id = data.get('message_id')
+    status     = data.get('status')
+
+    # Validate required fields
+    if not message_id or not status:
+        return jsonify({'success': False, 'message': 'message_id and status are required'}), 422
+
+    if status not in Sms.VALID_STATUSES:
+        return jsonify({
+            'success': False,
+            'message': f'Invalid status. Must be one of: {", ".join(Sms.VALID_STATUSES)}'
+        }), 422
+
+    sms = Sms.query.get(message_id)
     if not sms:
-        raise HTTPException(status_code=404, detail="SMS record not found")
+        return jsonify({'success': False, 'message': 'SMS record not found'}), 404
+
+    logger.info(f'Updating SMS {message_id} from {sms.sms_status} to {status}')
 
     sms.sms_status = status
+
     if status == Sms.STATUS_SENT:
         sms.sent_at = datetime.utcnow()
     elif status == Sms.STATUS_DELIVERED:
         sms.delivered_at = datetime.utcnow()
     elif status == Sms.STATUS_FAILED:
-        sms.error_message = data.get("error_message")
+        sms.error_message = data.get('error_message')
 
-    db.commit()
-    db.refresh(sms)
+    db.session.commit()
 
-    return {
-        "success": True,
-        "message": "Status updated successfully",
-        "data": {
-            "message_id": sms.id,
-            "status": sms.sms_status,
-            "sent_at": sms.sent_at.isoformat() if sms.sent_at else None,
-            "delivered_at": sms.delivered_at.isoformat() if sms.delivered_at else None,
-        }
-    }</code></pre>
+    return jsonify({
+        'success': True,
+        'message': 'Status updated successfully',
+        'data': sms.to_dict()
+    })
 
-            <h4>Step 3: Main App</h4>
-            <pre><code>from fastapi import FastAPI
-from sms_bridge import router as sms_router
 
-app = FastAPI(title="SMS Bridge Gateway")
-app.include_router(sms_router)</code></pre>
-        </div>
-    </div>
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True, port=5000)</code></pre>
 
-    <!-- Spring Boot Tab -->
-    <div class="tab-pane fade" id="spring" role="tabpanel">
-        <div class="guide-content">
-            <h3>Spring Boot Integration Guide</h3>
-            <h4>Overview</h4>
-            <p>Complete integration for Spring Boot (Java).</p>
+                    <h4>Django Note</h4>
+                    <p>For Django, create the same model fields in <code>models.py</code> using Django ORM, and define the three endpoints as function-based or class-based views in <code>views.py</code>. Register them in <code>urls.py</code> using the same URL patterns:</p>
+                    <pre><code># urls.py (Django)
+from django.urls import path
+from . import views
 
-            <h4>Step 1: Entities</h4>
-            <p><strong>Sms.java</strong></p>
-            <pre><code>@Entity
-public class Sms {
-    @Id @GeneratedValue
+urlpatterns = [
+    path('test-connection', views.test_connection),
+    path('api/v1/sms-bridge/pending-sms', views.get_pending_sms),
+    path('api/v1/sms-bridge/update-status', views.update_status),
+]</code></pre>
+
+                    <h4>Integration Notes</h4>
+                    <ul>
+                        <li>Use <code>gunicorn</code> or <code>uvicorn</code> in production instead of Flask's built-in server</li>
+                        <li>Configure CORS if the Android app calls from a different origin using <code>flask-cors</code></li>
+                        <li>Use environment variables for DB credentials (<code>python-dotenv</code>)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ==================== SPRING BOOT TAB ==================== -->
+            <div class="tab-pane fade" id="spring" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Spring Boot Integration Guide</h3>
+
+                    <h4>Overview</h4>
+                    <p>This guide demonstrates integrating SMS Bridge Gateway with a Spring Boot (Java) backend using Spring Data JPA and REST controllers.</p>
+
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Java 17+</li>
+                        <li>Spring Boot 3.0+</li>
+                        <li>Spring Data JPA</li>
+                        <li>MySQL or PostgreSQL</li>
+                        <li>Maven or Gradle</li>
+                        <li>Android device with SMS Bridge App installed</li>
+                    </ul>
+
+                    <h4>Step 1: Maven Dependencies</h4>
+                    <pre><code>&lt;!-- pom.xml --&gt;
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+
+                    <h4>Step 2: application.properties</h4>
+                    <pre><code># src/main/resources/application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/sms_bridge
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true</code></pre>
+
+                    <h4>Step 3: Entity Classes</h4>
+                    <h5>UserPhoneNumber Entity</h5>
+                    <pre><code>// UserPhoneNumber.java
+package com.example.smsbridge.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.List;
+
+@Entity
+@Table(name = "user_phone_numbers")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserPhoneNumber {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String smsStatus = "QUEUED";
+
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "userPhoneNumber", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List&lt;Sms&gt; smsList;
+}</code></pre>
+
+                    <h5>Sms Entity</h5>
+                    <pre><code>// Sms.java
+package com.example.smsbridge.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "sms")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Sms {
+
+    public enum Status { QUEUED, PENDING, SENT, DELIVERED, FAILED }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sms_status", nullable = false)
+    private Status smsStatus = Status.QUEUED;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String message;
+
+    @Column(name = "error_message", columnDefinition = "TEXT")
     private String errorMessage;
+
+    @Column(name = "sent_at")
     private LocalDateTime sentAt;
+
+    @Column(name = "delivered_at")
     private LocalDateTime deliveredAt;
 
-    @ManyToOne
-    private UserPhoneNumber recipientNumber;
-
-    public static final String STATUS_QUEUED = "QUEUED";
-    public static final String STATUS_SENT = "SENT";
-    public static final String STATUS_DELIVERED = "DELIVERED";
-    public static final String STATUS_FAILED = "FAILED";
-    // ... getters and setters
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_phone_number_id", nullable = false)
+    private UserPhoneNumber userPhoneNumber;
 }</code></pre>
 
-            <h4>Step 2: Controller</h4>
-            <pre><code>@RestController
-@RequestMapping("/api/v1/sms-bridge")
+                    <h4>Step 4: Repository</h4>
+                    <pre><code>// SmsRepository.java
+package com.example.smsbridge.repository;
+
+import com.example.smsbridge.entity.Sms;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Pageable;
+import java.util.List;
+
+public interface SmsRepository extends JpaRepository&lt;Sms, Long&gt; {
+
+    List&lt;Sms&gt; findBySmsStatusInOrderByIdAsc(
+        List&lt;Sms.Status&gt; statuses, Pageable pageable
+    );
+}</code></pre>
+
+                    <h4>Step 5: DTOs</h4>
+                    <pre><code>// SmsPendingResponse.java
+package com.example.smsbridge.dto;
+
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Data
+public class SmsPendingResponse {
+    private Long id;
+    private Long userId;
+    private String recipientNumber;
+    private String message;
+    private String status;
+    private LocalDateTime sentAt;
+    private LocalDateTime deliveredAt;
+}
+
+// UpdateStatusRequest.java
+@Data
+public class UpdateStatusRequest {
+    private String message_id;
+    private String status;
+    private String error_message;
+}</code></pre>
+
+                    <h4>Step 6: Controller</h4>
+                    <pre><code>// SmsBridgeController.java
+package com.example.smsbridge.controller;
+
+import com.example.smsbridge.dto.*;
+import com.example.smsbridge.entity.Sms;
+import com.example.smsbridge.repository.SmsRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Slf4j
+@RestController
+@RequiredArgsConstructor
 public class SmsBridgeController {
 
-    @GetMapping("/pending-sms")
-    public List&lt;Map&lt;String, Object&gt;&gt; getPendingSms() {
-        // Returns up to 50 QUEUED/FAILED SMS with same structure as Laravel
-    }
+    private final SmsRepository smsRepository;
 
     @GetMapping("/test-connection")
-    public Map&lt;String, String&gt; testConnection() {
-        return Map.of("status", "ok", "message", "Connection successful");
+    public ResponseEntity&lt;Map&lt;String, String&gt;&gt; testConnection() {
+        log.info("=== TEST CONNECTION ENDPOINT HIT ===");
+        return ResponseEntity.ok(Map.of("status", "ok", "message", "Connection successful"));
     }
 
-    @PostMapping("/update-status")
-    public ResponseEntity&lt;?&gt; updateStatus(@RequestBody Map&lt;String, Object&gt; request) {
-        // Updates status, sent_at, delivered_at, error_message
+    @GetMapping("/api/v1/sms-bridge/pending-sms")
+    public ResponseEntity&lt;List&lt;SmsPendingResponse&gt;&gt; getPendingSms() {
+        log.info("Fetching pending SMS (QUEUED and FAILED)");
+
+        List&lt;Sms&gt; pending = smsRepository.findBySmsStatusInOrderByIdAsc(
+            List.of(Sms.Status.QUEUED, Sms.Status.FAILED),
+            PageRequest.of(0, 50)
+        );
+
+        List&lt;SmsPendingResponse&gt; response = pending.stream().map(sms -&gt; {
+            SmsPendingResponse dto = new SmsPendingResponse();
+            dto.setId(sms.getId());
+            dto.setUserId(sms.getUserPhoneNumber().getId());
+            dto.setRecipientNumber(sms.getUserPhoneNumber().getPhoneNumber());
+            dto.setMessage(sms.getMessage());
+            dto.setStatus(sms.getSmsStatus().name());
+            dto.setSentAt(sms.getSentAt());
+            dto.setDeliveredAt(sms.getDeliveredAt());
+            return dto;
+        }).collect(Collectors.toList());
+
+        log.info("Found {} pending SMS records", response.size());
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/api/v1/sms-bridge/update-status")
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; updateStatus(@RequestBody UpdateStatusRequest req) {
+        if (req.getMessage_id() == null || req.getStatus() == null) {
+            return ResponseEntity.badRequest().body(Map.of(
+                "success", false, "message", "message_id and status are required"
+            ));
+        }
+
+        Sms.Status newStatus;
+        try {
+            newStatus = Sms.Status.valueOf(req.getStatus());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.unprocessableEntity().body(Map.of(
+                "success", false, "message", "Invalid status value"
+            ));
+        }
+
+        Optional&lt;Sms&gt; optSms = smsRepository.findById(Long.parseLong(req.getMessage_id()));
+        if (optSms.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("success", false, "message", "SMS record not found"));
+        }
+
+        Sms sms = optSms.get();
+        log.info("Updating SMS {} from {} to {}", sms.getId(), sms.getSmsStatus(), newStatus);
+
+        sms.setSmsStatus(newStatus);
+        switch (newStatus) {
+            case SENT      -> sms.setSentAt(LocalDateTime.now());
+            case DELIVERED -> sms.setDeliveredAt(LocalDateTime.now());
+            case FAILED    -> sms.setErrorMessage(req.getError_message());
+        }
+        smsRepository.save(sms);
+
+        return ResponseEntity.ok(Map.of("success", true, "message", "Status updated successfully"));
     }
 }</code></pre>
-            <p><em>Full detailed Spring Boot code available on request.</em></p>
-        </div>
-    </div>
 
-    <!-- Node.js Tab -->
-    <div class="tab-pane fade" id="node" role="tabpanel">
-        <div class="guide-content">
-            <h3>Node.js Integration Guide (Express.js)</h3>
-            <h4>Overview</h4>
-            <p>Complete integration using Express.js and Sequelize (or Mongoose).</p>
+                    <h4>Integration Notes</h4>
+                    <ul>
+                        <li>Use <code>@CrossOrigin</code> annotation or a global <code>CorsFilter</code> bean if calling from the Android app across origins</li>
+                        <li>The <code>@Slf4j</code> Lombok annotation provides the <code>log</code> variable automatically</li>
+                        <li>For Gradle, replace the Maven dependencies with the equivalent <code>implementation</code> entries in <code>build.gradle</code></li>
+                    </ul>
+                </div>
+            </div>
 
-            <h4>Step 1: Controller (smsBridgeController.js)</h4>
-            <pre><code>exports.getPendingSms = async (req, res) => {
-    const pending = await Sms.findAll({
-        where: { sms_status: ['QUEUED', 'FAILED'] },
-        include: ['recipientNumber'],
-        limit: 50
+            <!-- ==================== NODE.JS TAB ==================== -->
+            <div class="tab-pane fade" id="node" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Node.js Integration Guide (Express)</h3>
+
+                    <h4>Overview</h4>
+                    <p>This guide demonstrates integrating SMS Bridge Gateway with a Node.js Express backend using Sequelize ORM and MySQL/PostgreSQL.</p>
+
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Node.js 16+</li>
+                        <li>Express 4+</li>
+                        <li>Sequelize 6+ ORM</li>
+                        <li>MySQL2 or pg (PostgreSQL) driver</li>
+                        <li>Android device with SMS Bridge App installed</li>
+                    </ul>
+
+                    <h4>Step 1: Install Dependencies</h4>
+                    <pre><code>npm install express sequelize mysql2 dotenv
+# or for PostgreSQL:
+npm install express sequelize pg pg-hstore dotenv</code></pre>
+
+                    <h4>Step 2: Project Structure</h4>
+                    <pre><code>sms-bridge/
+├── models/
+│   ├── index.js
+│   ├── Sms.js
+│   └── UserPhoneNumber.js
+├── controllers/
+│   └── SmsBridgeController.js
+├── routes/
+│   └── smsBridge.js
+├── .env
+└── app.js</code></pre>
+
+                    <h4>Step 3: .env File</h4>
+                    <pre><code>DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=sms_bridge
+DB_USER=root
+DB_PASS=yourpassword
+PORT=3000</code></pre>
+
+                    <h4>Step 4: Database Models</h4>
+                    <h5>models/UserPhoneNumber.js</h5>
+                    <pre><code>// models/UserPhoneNumber.js
+const { DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+    const UserPhoneNumber = sequelize.define('UserPhoneNumber', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        phone_number: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+    }, {
+        tableName: 'user_phone_numbers',
+        timestamps: true,
+        underscored: true,
     });
 
-    res.json(pending.map(sms => ({
-        id: sms.id,
-        userId: sms.user_phone_number_id,
-        recipientNumber: sms.recipientNumber?.phone_number,
-        message: sms.message,
-        status: sms.sms_status,
-        sentAt: sms.sent_at,
-        deliveredAt: sms.delivered_at
-    })));
+    UserPhoneNumber.associate = (models) => {
+        UserPhoneNumber.hasMany(models.Sms, {
+            foreignKey: 'user_phone_number_id',
+            as: 'smsMessages',
+        });
+    };
+
+    return UserPhoneNumber;
+};</code></pre>
+
+                    <h5>models/Sms.js</h5>
+                    <pre><code>// models/Sms.js
+const { DataTypes } = require('sequelize');
+
+const VALID_STATUSES = ['QUEUED', 'PENDING', 'SENT', 'DELIVERED', 'FAILED'];
+
+module.exports = (sequelize) => {
+    const Sms = sequelize.define('Sms', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        sms_status: {
+            type: DataTypes.ENUM(...VALID_STATUSES),
+            allowNull: false,
+            defaultValue: 'QUEUED',
+        },
+        message: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        error_message: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        sent_at: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        delivered_at: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        user_phone_number_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+    }, {
+        tableName: 'sms',
+        timestamps: true,
+        underscored: true,
+    });
+
+    Sms.VALID_STATUSES = VALID_STATUSES;
+
+    Sms.associate = (models) => {
+        Sms.belongsTo(models.UserPhoneNumber, {
+            foreignKey: 'user_phone_number_id',
+            as: 'recipientNumber',
+        });
+    };
+
+    return Sms;
+};</code></pre>
+
+                    <h5>models/index.js</h5>
+                    <pre><code>// models/index.js
+const { Sequelize } = require('sequelize');
+require('dotenv').config();
+
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,
+        dialect: 'mysql',
+        logging: false,
+    }
+);
+
+const models = {
+    Sms: require('./Sms')(sequelize),
+    UserPhoneNumber: require('./UserPhoneNumber')(sequelize),
+};
+
+// Set up associations
+Object.values(models).forEach(model => {
+    if (model.associate) model.associate(models);
+});
+
+models.sequelize = sequelize;
+module.exports = models;</code></pre>
+
+                    <h4>Step 5: Controller</h4>
+                    <pre><code>// controllers/SmsBridgeController.js
+const { Sms, UserPhoneNumber } = require('../models');
+
+exports.testConnection = (req, res) => {
+    console.log('=== TEST CONNECTION ENDPOINT HIT ===');
+    res.json({ status: 'ok', message: 'Connection successful' });
+};
+
+exports.getPendingSms = async (req, res) => {
+    try {
+        console.log('Fetching pending SMS (QUEUED and FAILED)');
+
+        const pending = await Sms.findAll({
+            where: { sms_status: ['QUEUED', 'FAILED'] },
+            include: [{ model: UserPhoneNumber, as: 'recipientNumber' }],
+            order: [['id', 'ASC']],
+            limit: 50,
+        });
+
+        console.log(`Found ${pending.length} pending SMS records`);
+
+        const response = pending.map(sms => ({
+            id:              sms.id,
+            userId:          sms.user_phone_number_id,
+            recipientNumber: sms.recipientNumber?.phone_number ?? null,
+            message:         sms.message,
+            status:          sms.sms_status,
+            sentAt:          sms.sent_at,
+            deliveredAt:     sms.delivered_at,
+        }));
+
+        res.json(response);
+    } catch (error) {
+        console.error('Error fetching pending SMS:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
 };
 
 exports.updateStatus = async (req, res) => {
     const { message_id, status, error_message } = req.body;
-    const sms = await Sms.findByPk(message_id);
-    if (!sms) return res.status(404).json({success: false, message: "Not found"});
 
-    sms.sms_status = status;
-    if (status === 'SENT') sms.sent_at = new Date();
-    if (status === 'DELIVERED') sms.delivered_at = new Date();
-    if (status === 'FAILED') sms.error_message = error_message;
+    if (!message_id || !status) {
+        return res.status(422).json({
+            success: false,
+            message: 'message_id and status are required',
+        });
+    }
 
-    await sms.save();
-    res.json({success: true, message: "Status updated"});
+    if (!Sms.VALID_STATUSES.includes(status)) {
+        return res.status(422).json({
+            success: false,
+            message: `Invalid status. Must be one of: ${Sms.VALID_STATUSES.join(', ')}`,
+        });
+    }
+
+    try {
+        const sms = await Sms.findByPk(message_id);
+        if (!sms) {
+            return res.status(404).json({ success: false, message: 'SMS record not found' });
+        }
+
+        console.log(`Updating SMS ${message_id} from ${sms.sms_status} to ${status}`);
+
+        const updates = { sms_status: status };
+        if (status === 'SENT')      updates.sent_at      = new Date();
+        if (status === 'DELIVERED') updates.delivered_at = new Date();
+        if (status === 'FAILED' && error_message) updates.error_message = error_message;
+
+        await sms.update(updates);
+
+        res.json({ success: true, message: 'Status updated successfully' });
+    } catch (error) {
+        console.error('Error updating SMS status:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
 };</code></pre>
 
-            <h4>Step 2: Routes</h4>
-            <pre><code>router.get('/pending-sms', controller.getPendingSms);
-router.get('/test-connection', (req,res) => res.json({status:'ok', message:'Connection successful'}));
-router.post('/update-status', controller.updateStatus);</code></pre>
+                    <h4>Step 6: Routes</h4>
+                    <pre><code>// routes/smsBridge.js
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers/SmsBridgeController');
+
+router.get('/pending-sms', ctrl.getPendingSms);
+router.post('/update-status', ctrl.updateStatus);
+
+module.exports = router;</code></pre>
+
+                    <h4>Step 7: Main App</h4>
+                    <pre><code>// app.js
+const express = require('express');
+const { sequelize } = require('./models');
+const smsBridgeRoutes = require('./routes/smsBridge');
+const ctrl = require('./controllers/SmsBridgeController');
+require('dotenv').config();
+
+const app = express();
+app.use(express.json());
+
+// Routes
+app.get('/test-connection', ctrl.testConnection);
+app.use('/api/v1/sms-bridge', smsBridgeRoutes);
+
+const PORT = process.env.PORT || 3000;
+
+sequelize.sync().then(() => {
+    console.log('Database connected and synced');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}).catch(err => console.error('DB connection failed:', err));</code></pre>
+
+                    <h4>Integration Notes</h4>
+                    <ul>
+                        <li>Use <code>cors</code> npm package to allow requests from the Android app if needed</li>
+                        <li>For production, use <code>pm2</code> or a Docker container to keep the server alive</li>
+                        <li>Consider adding request validation middleware like <code>express-validator</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ==================== POSTMAN TAB ==================== -->
+            <div class="tab-pane fade" id="postman" role="tabpanel">
+                <div class="guide-content">
+                    <h3>Postman / API Reference</h3>
+                    <p>Use these sample payloads to test the SMS Bridge endpoints in Postman. Replace <code>BASE_URL</code> with your actual server address (e.g., <code>http://localhost:8000</code>).</p>
+
+                    <hr />
+
+                    <!-- Endpoint 1 -->
+                    <h4><span class="badge-method badge-get">GET</span> &nbsp; Test Connection</h4>
+                    <div class="endpoint-box">GET {{BASE_URL}}/test-connection</div>
+                    <p><strong>Headers:</strong></p>
+                    <pre><code>Content-Type: application/json</code></pre>
+                    <p><strong>Expected Response (200 OK):</strong></p>
+                    <pre><code>{
+  "status": "ok",
+  "message": "Connection successful"
+}</code></pre>
+
+                    <hr />
+
+                    <!-- Endpoint 2 -->
+                    <h4><span class="badge-method badge-get">GET</span> &nbsp; Get Pending SMS</h4>
+                    <div class="endpoint-box">GET {{BASE_URL}}/api/v1/sms-bridge/pending-sms</div>
+                    <p><strong>Headers:</strong></p>
+                    <pre><code>Content-Type: application/json</code></pre>
+                    <p><strong>Expected Response (200 OK):</strong></p>
+                    <pre><code>[
+  {
+    "id": 1,
+    "userId": 5,
+    "recipientNumber": "+255712345678",
+    "message": "Your OTP code is 483920. Valid for 5 minutes.",
+    "status": "QUEUED",
+    "sentAt": null,
+    "deliveredAt": null
+  },
+  {
+    "id": 2,
+    "userId": 8,
+    "recipientNumber": "+255698765432",
+    "message": "Welcome to our platform! Your account is ready.",
+    "status": "FAILED",
+    "sentAt": null,
+    "deliveredAt": null
+  }
+]</code></pre>
+
+                    <hr />
+
+                    <!-- Endpoint 3 -->
+                    <h4><span class="badge-method badge-post">POST</span> &nbsp; Update SMS Status — SENT</h4>
+                    <div class="endpoint-box">POST {{BASE_URL}}/api/v1/sms-bridge/update-status</div>
+                    <p><strong>Headers:</strong></p>
+                    <pre><code>Content-Type: application/json</code></pre>
+                    <p><strong>Request Body:</strong></p>
+                    <pre><code>{
+  "message_id": "1",
+  "status": "SENT"
+}</code></pre>
+                    <p><strong>Expected Response (200 OK):</strong></p>
+                    <pre><code>{
+  "success": true,
+  "message": "Status updated successfully",
+  "data": {
+    "message_id": 1,
+    "status": "SENT",
+    "sent_at": "2025-06-12T09:30:00.000Z",
+    "delivered_at": null
+  }
+}</code></pre>
+
+                    <hr />
+
+                    <!-- Endpoint 4 -->
+                    <h4><span class="badge-method badge-post">POST</span> &nbsp; Update SMS Status — DELIVERED</h4>
+                    <div class="endpoint-box">POST {{BASE_URL}}/api/v1/sms-bridge/update-status</div>
+                    <p><strong>Request Body:</strong></p>
+                    <pre><code>{
+  "message_id": "1",
+  "status": "DELIVERED"
+}</code></pre>
+                    <p><strong>Expected Response (200 OK):</strong></p>
+                    <pre><code>{
+  "success": true,
+  "message": "Status updated successfully",
+  "data": {
+    "message_id": 1,
+    "status": "DELIVERED",
+    "sent_at": "2025-06-12T09:30:00.000Z",
+    "delivered_at": "2025-06-12T09:30:05.000Z"
+  }
+}</code></pre>
+
+                    <hr />
+
+                    <!-- Endpoint 5 -->
+                    <h4><span class="badge-method badge-post">POST</span> &nbsp; Update SMS Status — FAILED</h4>
+                    <div class="endpoint-box">POST {{BASE_URL}}/api/v1/sms-bridge/update-status</div>
+                    <p><strong>Request Body:</strong></p>
+                    <pre><code>{
+  "message_id": "2",
+  "status": "FAILED",
+  "error_message": "SIM card not available or number unreachable"
+}</code></pre>
+                    <p><strong>Expected Response (200 OK):</strong></p>
+                    <pre><code>{
+  "success": true,
+  "message": "Status updated successfully",
+  "data": {
+    "message_id": 2,
+    "status": "FAILED",
+    "sent_at": null,
+    "delivered_at": null
+  }
+}</code></pre>
+
+                    <hr />
+
+                    <!-- Error cases -->
+                    <h4>Error Response Samples</h4>
+
+                    <h5>422 — Validation Error (missing fields)</h5>
+                    <pre><code>// Request Body:
+{ "status": "SENT" }
+
+// Response 422:
+{
+  "success": false,
+  "message": "Invalid request data",
+  "errors": {
+    "message_id": ["The message_id field is required."]
+  }
+}</code></pre>
+
+                    <h5>422 — Invalid Status Value</h5>
+                    <pre><code>// Request Body:
+{ "message_id": "1", "status": "UNKNOWN" }
+
+// Response 422:
+{
+  "success": false,
+  "message": "Invalid status. Must be one of: QUEUED, PENDING, SENT, DELIVERED, FAILED"
+}</code></pre>
+
+                    <h5>404 — SMS Not Found</h5>
+                    <pre><code>// Response 404:
+{
+  "success": false,
+  "message": "SMS record not found"
+}</code></pre>
+
+                    <hr />
+
+                    <h4>Postman Environment Variables</h4>
+                    <p>Set up a Postman environment with these variables for easy switching between local and production:</p>
+                    <pre><code>BASE_URL = http://localhost:8000      // Laravel / Python / Spring Boot
+BASE_URL = http://localhost:3000      // Node.js Express
+BASE_URL = https://yourapp.railway.app // Production</code></pre>
+
+                    <h4>All Valid Status Values</h4>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Description</th>
+                                    <th>Timestamp Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><code>QUEUED</code></td><td>Message waiting to be picked up by the Android app</td><td>—</td></tr>
+                                <tr><td><code>PENDING</code></td><td>Message picked up, processing</td><td>—</td></tr>
+                                <tr><td><code>SENT</code></td><td>Successfully sent from device</td><td><code>sent_at</code></td></tr>
+                                <tr><td><code>DELIVERED</code></td><td>Confirmed delivered to recipient</td><td><code>delivered_at</code></td></tr>
+                                <tr><td><code>FAILED</code></td><td>Send failed — will be retried on next poll</td><td><code>error_message</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-</div>
-    </div>
-
-    <!-- Footer and modal remain the same -->
-
-
-    <!-- Feedback Modal -->
-    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-        <!-- Modal content remains the same -->
-    </div>
-
-    <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-
 </html>
